@@ -56,30 +56,3 @@ def solve():
         u = int(input_data[idx])
         v = int(input_data[idx+1])
         adj[u].append(v)
-        adj[v].append(u)
-        idx += 2
-        
-    s = int(input_data[idx])
-    d = int(input_data[idx+1])
-    
-    # 1. Shortest path using BFS
-    shortest_path = bfs(s, d, n, adj)
-    print(shortest_path)
-    
-    # 2. Cycle detection using DFS
-    visited = [False] * n
-    has_cycle = False
-    
-    for i in range(n):
-        if not visited[i]:
-            if dfs(i, -1, visited, adj):
-                has_cycle = True
-                break
-                
-    if has_cycle:
-        print("YES")
-    else:
-        print("NO")
-
-if __name__ == "__main__":
-    solve()
